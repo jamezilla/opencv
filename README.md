@@ -1,20 +1,8 @@
-## OpenCV: Open Source Computer Vision Library
+# ios-opencv
 
-### Resources
+This is a precompiled opencv framework for use with Carthage in iOS. This framework is extremely stripped down and only includes the `imgproc` and `imgcodecs` modules and excludes the i386 simulator architecture.
 
-* Homepage: <http://opencv.org>
-* Docs: <http://docs.opencv.org/master/>
-* Q&A forum: <http://answers.opencv.org>
-* Issue tracking: <https://github.com/opencv/opencv/issues>
-
-### Contributing
-
-Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/How_to_contribute) before starting work on a pull request.
-
-#### Summary of the guidelines:
-
-* One pull request per issue;
-* Choose the right base branch;
-* Include tests and documentation;
-* Clean up "oops" commits before submitting;
-* Follow the [coding style guide](https://github.com/opencv/opencv/wiki/Coding_Style_Guide).
+To use, add this to your Cartfile:
+```
+binary "https://raw.githubusercontent.com/jamezilla/opencv/master/opencv2.json" ~> 3.4.1
+```

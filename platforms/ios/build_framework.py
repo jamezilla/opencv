@@ -128,6 +128,9 @@ class Builder:
             "-DAPPLE_FRAMEWORK=ON",
             "-DCMAKE_INSTALL_PREFIX=install",
             "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_LIST=imgproc,imgcodecs",
+            "-DBUILD_opencv_highgui=OFF",
+            "-DBUILD_opencv_videoio=OFF",
         ] + ([
             "-DBUILD_SHARED_LIBS=ON",
             "-DCMAKE_MACOSX_BUNDLE=ON",
@@ -285,6 +288,6 @@ if __name__ == "__main__":
         ] if os.environ.get('BUILD_PRECOMMIT', None) else
         [
             (["armv7", "armv7s", "arm64"], "iPhoneOS"),
-            (["i386", "x86_64"], "iPhoneSimulator"),
+            (["x86_64"], "iPhoneSimulator"),
         ])
     b.build(args.out)
