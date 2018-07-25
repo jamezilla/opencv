@@ -151,8 +151,9 @@ class Builder:
 
         if self.dynamic:
             buildcmd += [
-                "IPHONEOS_DEPLOYMENT_TARGET=8.0",
+                "IPHONEOS_DEPLOYMENT_TARGET=10.0",
                 "ONLY_ACTIVE_ARCH=NO",
+                "BITCODE_GENERATION_MODE = marker"
             ]
 
             if not self.bitcodedisabled:
@@ -288,6 +289,6 @@ if __name__ == "__main__":
         ] if os.environ.get('BUILD_PRECOMMIT', None) else
         [
             (["armv7", "armv7s", "arm64"], "iPhoneOS"),
-            (["x86_64"], "iPhoneSimulator"),
+            (["i386", "x86_64"], "iPhoneSimulator"),
         ])
     b.build(args.out)
