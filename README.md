@@ -11,7 +11,7 @@ The iOS platform build script has the following patch to configure this build:
 
 ```
 diff --git a/platforms/ios/build_framework.py b/platforms/ios/build_framework.py
-index 32305f9a0..251933ba6 100644
+index 32305f9a0..9de84009a 100644
 --- a/platforms/ios/build_framework.py
 +++ b/platforms/ios/build_framework.py
 @@ -128,6 +128,9 @@ class Builder:
@@ -24,12 +24,13 @@ index 32305f9a0..251933ba6 100644
          ] + ([
              "-DBUILD_SHARED_LIBS=ON",
              "-DCMAKE_MACOSX_BUNDLE=ON",
-@@ -285,6 +288,6 @@ if __name__ == "__main__":
-         ] if os.environ.get('BUILD_PRECOMMIT', None) else
-         [
-             (["armv7", "armv7s", "arm64"], "iPhoneOS"),
--            (["i386", "x86_64"], "iPhoneSimulator"),
-+            (["x86_64"], "iPhoneSimulator"),
-         ])
-     b.build(args.out)
+@@ -148,8 +151,9 @@ class Builder:
+
+         if self.dynamic:
+             buildcmd += [
+-                "IPHONEOS_DEPLOYMENT_TARGET=8.0",
++                "IPHONEOS_DEPLOYMENT_TARGET=10.0",
+                 "ONLY_ACTIVE_ARCH=NO",
++                "BITCODE_GENERATION_MODE = marker"
+             ]
 ```
